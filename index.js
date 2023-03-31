@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app =express();
-const port=300;
+const port=3000;
 app.use(express.json());
 app.get('/',(req,res)=>{
     res.send('welcome to node js and expresss')
@@ -23,10 +23,6 @@ app.get('/:id',async(req,res)=>{
     
    }
 
-})
-
-app.listen(port,()=>{
-    console.log('server is runing on port ${port}')
 })
 
 app.post('/',async(req,res)=>{
@@ -52,6 +48,12 @@ app.delete('/:id',async(req,res)=>{
     const user=await User.findByIdAndDelete(id);
     res.json({message:'succesfully deleted'})
 })
+
+
+app.listen(port,()=>{
+    console.log('server is runing on port ${port}')
+})
+
 mongoose.connect(process.env.MOGOURL)
 .then(()=>{
     console.log('connected to database')
