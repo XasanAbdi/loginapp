@@ -34,7 +34,7 @@ app.post('/',async(req,res)=>{
     res.status(201).json(newData);
 })
 
-app.post('/',async(req,res)=>{
+app.post('/login',async(req,res)=>{
     const {email,password}=req.body
     const user= await User.findOne({email});
 
