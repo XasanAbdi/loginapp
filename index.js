@@ -13,6 +13,18 @@ app.use(express.json());
 app.get('/',(req,res)=>{
     res.send('welcome to node js and expresss')
 })
+
+app.get('/:id',async(req,res)=>{
+   const { id} = req.params;
+
+   const user = await User.findById(id);
+   if (user) {
+    res.json(user);
+    
+   }
+
+})
+
 app.listen(port,()=>{
     console.log('server is runing on port ${port}')
 })
