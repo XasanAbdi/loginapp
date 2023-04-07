@@ -14,6 +14,13 @@ app.get('/',(req,res)=>{
     res.send('welcome to node js and expresss')
 })
 
+app.get('/',async(req, res)=>{
+
+const finduser = await User.find()
+res.json(finduser);
+
+})
+
 app.get('/:id',async(req,res)=>{
    const { id} = req.params;
 
@@ -24,6 +31,7 @@ app.get('/:id',async(req,res)=>{
    }
 
 })
+
 
 app.post('/',async(req,res)=>{
     const {name,email,password}=req.body
